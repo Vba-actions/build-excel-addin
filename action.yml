@@ -15,8 +15,8 @@ runs:
   using: "composite"
   steps:
     - run: |
-        python -m pip install git+https://github.com/Beakerboy/vbaProject-Compiler@dev
-        python -m pip install git+https://github.com/Beakerboy/MS-CFB@dev
+        python -m pip install git+https://github.com/Beakerboy/vbaProject-Compiler@dev#egg=vbaproject_compiler
+        python -m pip install git+https://github.com/Beakerboy/MS-CFB@dev#egg=ms_cfb
         python -m pip install git+https://github.com/Beakerboy/Excel-Addin-Generator@File-hash
       shell: bash
     - run: |
