@@ -1,0 +1,25 @@
+name: 'build-excel-addin'
+description: 'Build an excel addin from VBA source files.'
+author: 'Kevin Nowaczyk'
+branding:
+  icon: settings
+  color: black
+inputs:
+  path:
+    description: 'The path to the source files.'
+    default: 'src'
+  file_name:
+    description: 'The name of the final addin.'
+    default: 'Addin.xlam'
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        install excelAddinGenerator
+        install MS-CFB
+      shell: bash
+    - run: |
+        python vbaproject_compiler ${{ inputs.path }} ./project
+        python ole_file.py -o ./vbaProject.bin ./project
+        python excelAddinGenerator/main.py ./vbaProject.bin ${{ github.workspace }}/${{ inputs.file_name }}
+      shell: bash
