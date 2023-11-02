@@ -21,6 +21,4 @@ runs:
       shell: bash
     - run: |
         python -m vbaproject_compiler ${{ inputs.path }} ./project
-        #python -m ole_file.py -o ./vbaProject.bin ./project
-        #python -m excelAddinGenerator/main.py ./vbaProject.bin ${{ github.workspace }}/${{ inputs.file_name }}
       shell: bash
