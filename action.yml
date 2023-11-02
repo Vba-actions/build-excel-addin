@@ -15,8 +15,9 @@ runs:
   using: "composite"
   steps:
     - run: |
-        install excelAddinGenerator
-        install MS-CFB
+        python -m pip install git+https://github.com/Beakerboy/vbaProject-Compiler@dev
+        python -m pip install git+https://github.com/Beakerboy/MS-CFB@dev
+        python -m pip install git+https://github.com/Beakerboy/Excel-Addin-Generator@File-hash
       shell: bash
     - run: |
         python vbaproject_compiler ${{ inputs.path }} ./project
