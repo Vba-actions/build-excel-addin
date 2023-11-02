@@ -22,5 +22,5 @@ runs:
       shell: bash
     - run: |
         python -m vbaproject_compiler ${{ github.workspace }}/${{ inputs.path }}
-        ls -al
+        ls -al src
       shell: bash
