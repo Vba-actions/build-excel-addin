@@ -22,5 +22,5 @@ runs:
       shell: bash
     - run: |
         python -m vbaproject_compiler ${{ github.workspace }}/${{ inputs.path }}
-        python -m excel_addin_generator ./vbaProject.bin ${{ inputs.file_name }}
+        python -m excel_addin_generator ./vbaProject.bin ${{ github.workspace }}/${{ inputs.file_name }}
       shell: bash
