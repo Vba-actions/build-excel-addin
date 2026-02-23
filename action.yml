@@ -21,6 +21,6 @@ runs:
         python -m pip install git+https://github.com/Beakerboy/Excel-Addin-Generator@File-hash
       shell: bash
     - run: |
-        python -m vbaproject_compiler ${{ github.workspace }}/${{ inputs.path }}
+        python -m ms_ovba ${{ github.workspace }}/${{ inputs.path }}
         python -m excel_addin_generator ./vbaProject.bin ${{ github.workspace }}/${{ inputs.file_name }}
       shell: bash
