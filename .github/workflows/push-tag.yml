@@ -1,0 +1,28 @@
+name: Release Major Tag
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push Major Tag
+        run: |
+          # Extract major version (e.g., v1.1.0 -> v1)
+          MAJOR_VERSION=$(echo "${{ github.ref_name }}" | cut -d. -f1)
+          
+          # Configure Git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Force update the major tag locally and push
+          git tag -fa $MAJOR_VERSION -m "Update $MAJOR_VERSION to ${{ github.ref_name }}"
+          git push origin $MAJOR_VERSION --force
